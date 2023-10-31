@@ -9,12 +9,12 @@
 
 		<!-- <p class="mb-12 underline text-xl text-center">return to home</p> -->
 
-		<section class="mb-12 min-h-screen grid gap-y-6">
+		<section class="mb-12 grid min-h-screen gap-y-6">
 			<article class="rounded-lg border-2 border-zinc-900 p-6">
 				<h2 class="text-xl font-medium">cool cats</h2>
 				<h3 class="mb-2">huge set of beautiful cats!</h3>
 
-				<p class="text-zinc-400">#cats #portraits</p>
+				<p class="text-zinc-600">#cats #portraits</p>
 			</article>
 
 			<img class="rounded-lg" src="/placeholder.jpg" alt="fancy alt text." />
