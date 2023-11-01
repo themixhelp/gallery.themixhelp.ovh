@@ -24,7 +24,7 @@
 	instance
 		.get('/galleries')
 		.then(response => {
-			console.log(response.data.data)
+			// console.log(response.data.data)
 
 			response.data.data.forEach(element => {
 				STATE.CONTENT.DATA.push({

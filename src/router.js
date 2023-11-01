@@ -17,6 +17,9 @@ const router = createRouter({
 			component: Gallery,
 		},
 	],
+	scrollBehavior() {
+		return { top: 0 }
+	},
 })
 
 export default router
