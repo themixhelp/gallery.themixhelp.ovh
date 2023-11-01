@@ -25,8 +25,6 @@
 	instance
 		.get('/galleries')
 		.then(response => {
-			// console.log(response.data.data)
-
 			response.data.data.forEach(gallery => {
 				STATE.CONTENT.DATA.push({
 					id: gallery.id,
@@ -38,11 +36,6 @@
 					slug: gallery.attributes.slug,
 				})
 			})
-
-			// STATE.CONTENT.DATA.forEach(element => {
-			// 	const IMG = new Image()
-			// 	IMG.src = element.url
-			// })
 
 			STATE.LOADING = false
 			STATE.CONTENT.DISPLAY = true

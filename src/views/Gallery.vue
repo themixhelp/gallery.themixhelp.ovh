@@ -28,8 +28,6 @@
 	instance
 		.get(`/galleries/${ROUTER.currentRoute.value.params.slug}`)
 		.then(response => {
-			console.log(response)
-
 			STATE.CONTENT.DATA = response.data.data.attributes
 
 			const IMAGES = []
@@ -49,8 +47,6 @@
 			STATE.CONTENT.DISPLAY = true
 		})
 		.catch(error => {
-            console.log(error)
-
 			STATE.LOADING = false
 			STATE.ERROR.DISPLAY = true
 
@@ -71,14 +67,20 @@
 		<!-- <p class="mb-12 underline text-xl text-center">return to home</p> -->
 
 		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 grid min-h-screen gap-y-6">
-			<article class="rounded-lg border-2 border-zinc-900 p-6 dark:border-zinc-100">
-				<h2 class="text-xl font-medium">{{ STATE.CONTENT.DATA.title }}</h2>
-				<h3 class="mb-2">{{ STATE.CONTENT.DATA.description }}</h3>
+			<article class="rounded-lg border-2 border-zinc-900 dark:border-zinc-100">
+                <RouterLink to="/" class="flex items-center justify-center p-6 border-b-2 border-zinc-900 dark:border-zinc-100">
+                    <p>return to home</p>
+                </RouterLink>
 
-				<p class="text-zinc-600 dark:text-zinc-400">{{ STATE.CONTENT.DATA.tags }}</p>
+                <section class="p-6">
+                    <h2 class="text-xl font-medium">{{ STATE.CONTENT.DATA.title }}</h2>
+                    <h3 class="mb-2">{{ STATE.CONTENT.DATA.description }}</h3>
+
+                    <p class="text-zinc-600 dark:text-zinc-400">{{ STATE.CONTENT.DATA.tags }}</p>
+                </section>
 			</article>
 
-			<img v-for="IMAGE in STATE.CONTENT.DATA.images" class="rounded-lg border-2 border-zinc-900 dark:border-zinc-100" :src="IMAGE.URL" :alt="IMAGE.alt" />
+			<img v-for="IMAGE in STATE.CONTENT.DATA.images" class="rounded-lg border-2 border-zinc-900 dark:border-zinc-100" :src="IMAGE.URL" :alt="IMAGE.alt" loading="lazy" />
 		</section>
 
 		<Error v-if="STATE.ERROR.DISPLAY" :code="STATE.ERROR.CODE" :description="STATE.ERROR.DESCRIPTION" />
