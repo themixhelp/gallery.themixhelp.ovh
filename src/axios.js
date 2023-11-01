@@ -1,7 +1,8 @@
 import axios from 'axios'
+import STORE from '@/store.js'
 
 const instance = axios.create({
-	baseURL: 'http://144.24.168.122:1337/api',
+	baseURL: `${STORE.URL}/api`,
 	params: {
 		populate: '*',
 	},

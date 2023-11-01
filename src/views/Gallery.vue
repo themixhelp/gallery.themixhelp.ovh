@@ -3,6 +3,7 @@
 	import { useRouter } from 'vue-router'
 
 	import instance from '@/axios.js'
+	import STORE from '@/store.js'
 
 	import Header from '@/components/Header.vue'
 	import Error from '@/components/Error.vue'
@@ -35,7 +36,7 @@
 
 			STATE.CONTENT.DATA.images.data.forEach(image => {
 				IMAGES.push({
-					URL: 'http://144.24.168.122:1337' + image.attributes.url,
+					URL: STORE.URL + image.attributes.url,
 					alt: image.attributes.alternativeText,
 				})
 			})

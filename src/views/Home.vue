@@ -2,6 +2,7 @@
 	import { reactive } from 'vue'
 
 	import instance from '@/axios.js'
+	import STORE from '@/store.js'
 
 	import Header from '@/components/Header.vue'
 	import Error from '@/components/Error.vue'
@@ -29,7 +30,7 @@
 			response.data.data.forEach(gallery => {
 				STATE.CONTENT.DATA.push({
 					id: gallery.id,
-					URL: 'http://144.24.168.122:1337' + gallery.attributes.images.data[0].attributes.url,
+					URL: STORE.URL + gallery.attributes.images.data[0].attributes.url,
 					alt: gallery.attributes.images.data[0].attributes.alternativeText,
 					title: gallery.attributes.title,
 					description: gallery.attributes.description,
