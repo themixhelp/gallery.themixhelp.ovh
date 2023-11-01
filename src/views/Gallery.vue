@@ -63,7 +63,7 @@
 		<!-- <p class="mb-12 underline text-xl text-center">return to home</p> -->
 
 		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 grid min-h-screen gap-y-6">
-			<article class="rounded-lg border-2 border-zinc-900 dark:border-zinc-100 p-6">
+			<article class="rounded-lg border-2 border-zinc-900 p-6 dark:border-zinc-100">
 				<h2 class="text-xl font-medium">{{ STATE.CONTENT.DATA.title }}</h2>
 				<h3>{{ STATE.CONTENT.DATA.description }}</h3>
 			</article>
