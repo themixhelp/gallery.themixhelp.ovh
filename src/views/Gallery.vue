@@ -28,7 +28,7 @@
 	instance
 		.get(`/galleries/${ROUTER.currentRoute.value.params.slug}`)
 		.then(response => {
-			// console.log(response.data.data.attributes)
+			console.log(response)
 
 			STATE.CONTENT.DATA = response.data.data.attributes
 
@@ -49,6 +49,8 @@
 			STATE.CONTENT.DISPLAY = true
 		})
 		.catch(error => {
+            console.log(error)
+
 			STATE.LOADING = false
 			STATE.ERROR.DISPLAY = true
 
