@@ -3,7 +3,7 @@
 </script>
 
 <template>
-	<main class="app-wrapper min-h-screen bg-zinc-100 font-display text-zinc-900">
+	<main class="app-wrapper min-h-screen font-display">
 		<RouterView />
 	</main>
 </template>

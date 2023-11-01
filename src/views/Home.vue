@@ -78,17 +78,17 @@
 			<article
 				v-for="{ id, url, alt, title, description, tags, slug } in STATE.CONTENT.DATA"
 				:key="id"
-				class="mb-10 overflow-hidden rounded-lg border-2 border-zinc-900"
+				class="mb-10 overflow-hidden rounded-lg border-2 border-zinc-900 dark:border-zinc-100"
 			>
-				<section class="border-b-2 border-zinc-900">
+				<section class="border-b-2 border-zinc-900 dark:border-zinc-100">
 					<img class="aspect-square" :src="url" :alt="alt" loading="lazy" />
 				</section>
 
-				<section class="border-b-2 border-zinc-900 p-6">
+				<section class="border-b-2 border-zinc-900 p-6 dark:border-zinc-100">
 					<h2 class="text-xl font-medium">{{ title }}</h2>
 					<h3 class="mb-2">{{ description }}</h3>
 
-					<p class="text-zinc-600">{{ tags }}</p>
+					<p class="text-zinc-600 dark:text-zinc-400">{{ tags }}</p>
 				</section>
 
 				<RouterLink :to="slug" class="flex items-center justify-center p-6">
