@@ -75,12 +75,7 @@
 				<p class="text-zinc-600 dark:text-zinc-400">{{ STATE.CONTENT.DATA.tags }}</p>
 			</article>
 
-			<img
-				v-for="IMAGE in STATE.CONTENT.DATA.images"
-				class="rounded-lg border-2 border-zinc-900 dark:border-zinc-100"
-				:src="IMAGE.URL"
-				:alt="IMAGE.alt"
-			/>
+			<img v-for="IMAGE in STATE.CONTENT.DATA.images" class="rounded-lg border-2 border-zinc-900 dark:border-zinc-100" :src="IMAGE.URL" :alt="IMAGE.alt" />
 		</section>
 
 		<Error v-if="STATE.ERROR.DISPLAY" :code="STATE.ERROR.CODE" :description="STATE.ERROR.DESCRIPTION" />
