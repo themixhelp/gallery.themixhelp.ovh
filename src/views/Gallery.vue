@@ -14,12 +14,10 @@
 				<h2 class="text-xl font-medium">cool cats</h2>
 				<h3 class="mb-2">huge set of beautiful cats!</h3>
 
-				<p class="text-zinc-600">#cats #portraits</p>
+				<p class="text-zinc-600">#not #implemented #yet</p>
 			</article>
 
-			<img class="rounded-lg" src="/placeholder.jpg" alt="fancy alt text." />
-			<img class="rounded-lg" src="/horizontal.jpg" alt="fancy alt text." />
-			<img class="rounded-lg" src="/vertical.jpg" alt="fancy alt text." />
+			<img class="rounded-lg border-2 border-zinc-900" src="/placeholder.jpg" alt="fancy alt text." />
 		</section>
 
 		<Footer />
