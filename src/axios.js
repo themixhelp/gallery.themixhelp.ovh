@@ -5,6 +5,9 @@ const instance = axios.create({
 	params: {
 		populate: '*',
 	},
+	headers: {
+		Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+	},
 })
 
 export default instance

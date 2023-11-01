@@ -25,19 +25,24 @@
 	const ROUTER = useRouter()
 
 	instance
-		.get(`/gallery/${ROUTER.currentRoute.value.params.slug}`)
+		.get(`/galleries/${ROUTER.currentRoute.value.params.slug}`)
 		.then(response => {
-			console.log(response.data.data.attributes)
+			// console.log(response.data.data.attributes)
 
 			STATE.CONTENT.DATA = response.data.data.attributes
 
 			const IMAGES = []
 
 			STATE.CONTENT.DATA.images.data.forEach(image => {
-				IMAGES.push('http://144.24.168.122:1337' + image.attributes.url)
+				IMAGES.push({
+					URL: 'http://144.24.168.122:1337' + image.attributes.url,
+					alt: image.attributes.alternativeText,
+				})
 			})
 
 			STATE.CONTENT.DATA.images = IMAGES
+
+			STATE.CONTENT.DATA.tags = STATE.CONTENT.DATA.tags.data.map(item => `#${item.attributes.name}`).join(' ')
 
 			STATE.LOADING = false
 			STATE.CONTENT.DISPLAY = true
@@ -65,14 +70,16 @@
 		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 grid min-h-screen gap-y-6">
 			<article class="rounded-lg border-2 border-zinc-900 p-6 dark:border-zinc-100">
 				<h2 class="text-xl font-medium">{{ STATE.CONTENT.DATA.title }}</h2>
-				<h3>{{ STATE.CONTENT.DATA.description }}</h3>
+				<h3 class="mb-2">{{ STATE.CONTENT.DATA.description }}</h3>
+
+				<p class="text-zinc-600 dark:text-zinc-400">{{ STATE.CONTENT.DATA.tags }}</p>
 			</article>
 
 			<img
-				v-for="url in STATE.CONTENT.DATA.images"
+				v-for="IMAGE in STATE.CONTENT.DATA.images"
 				class="rounded-lg border-2 border-zinc-900 dark:border-zinc-100"
-				:src="url"
-				alt="fancy alt text."
+				:src="IMAGE.URL"
+				:alt="IMAGE.alt"
 			/>
 		</section>
 

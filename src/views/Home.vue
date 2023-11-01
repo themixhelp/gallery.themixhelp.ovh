@@ -26,26 +26,16 @@
 		.then(response => {
 			// console.log(response.data.data)
 
-			response.data.data.forEach(element => {
+			response.data.data.forEach(gallery => {
 				STATE.CONTENT.DATA.push({
-					id: element.id,
-					url: 'http://144.24.168.122:1337' + element.attributes.cover.data.attributes.url,
-					alt: element.attributes.cover.data.attributes.alternativeText,
-					title: element.attributes.title,
-					description: element.attributes.description,
-					tags: element.attributes.tags.data,
-					slug: element.attributes.slug,
+					id: gallery.id,
+					URL: 'http://144.24.168.122:1337' + gallery.attributes.images.data[0].attributes.url,
+					alt: gallery.attributes.images.data[0].attributes.alternativeText,
+					title: gallery.attributes.title,
+					description: gallery.attributes.description,
+					tags: gallery.attributes.tags.data.map(item => `#${item.attributes.name}`).join(' '),
+					slug: gallery.attributes.slug,
 				})
-			})
-
-			STATE.CONTENT.DATA.forEach(element => {
-				let TAGS = ''
-
-				element.tags.forEach(tag => {
-					TAGS += '#' + tag.attributes.name + ' '
-				})
-
-				element.tags = TAGS
 			})
 
 			// STATE.CONTENT.DATA.forEach(element => {
@@ -76,12 +66,12 @@
 
 		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 min-h-screen">
 			<article
-				v-for="{ id, url, alt, title, description, tags, slug } in STATE.CONTENT.DATA"
+				v-for="{ id, URL, alt, title, description, tags, slug } in STATE.CONTENT.DATA"
 				:key="id"
 				class="mb-10 overflow-hidden rounded-lg border-2 border-zinc-900 dark:border-zinc-100"
 			>
 				<section class="border-b-2 border-zinc-900 dark:border-zinc-100">
-					<img class="aspect-square" :src="url" :alt="alt" loading="lazy" />
+					<img class="aspect-square" :src="URL" :alt="alt" loading="lazy" />
 				</section>
 
 				<section class="border-b-2 border-zinc-900 p-6 dark:border-zinc-100">
