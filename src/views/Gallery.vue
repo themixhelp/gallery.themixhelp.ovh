@@ -83,12 +83,14 @@
 							:class="STATE.CONTENT.DATA.images[index].loaded ? '' : 'blur-3xl'"
 							class="bg-cover bg-no-repeat"
 						>
-							<img
-								@load="STATE.CONTENT.DATA.images[index].loaded = true"
-								:src="IMAGE.fullURL"
-								:alt="IMAGE.alternativeText"
-								loading="lazy"
-							/>
+							<a :href="IMAGE.fullURL" class="cursor-zoom-in" target="_blank">
+								<img
+									@load="STATE.CONTENT.DATA.images[index].loaded = true"
+									:src="IMAGE.fullURL"
+									:alt="IMAGE.alternativeText"
+									loading="lazy"
+								/>
+							</a>
 						</section>
 					</section>
 
