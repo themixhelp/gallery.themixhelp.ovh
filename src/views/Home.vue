@@ -50,7 +50,7 @@
 		<Header />
 
 		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 grid min-h-screen auto-rows-min gap-10 lg:grid-cols-2 2xl:grid-cols-3">
-			<article v-for="{ id, URL, alternativeText, title, description, tags, slug } in STATE.CONTENT.DATA" :key="id" class="border0 flex flex-col overflow-hidden rounded-lg">
+			<article v-for="{ id, URL, alternativeText, title, description, tags, slug } in STATE.CONTENT.DATA" :key="id" class="border flex flex-col overflow-hidden rounded-lg">
 				<section class="borderline">
 					<img class="aspect-square w-full" :src="URL" :alt="alternativeText" loading="lazy" />
 				</section>
