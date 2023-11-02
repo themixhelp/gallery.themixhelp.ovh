@@ -4,6 +4,8 @@
 	import instance from '@/axios.js'
 	import STORE from '@/store.js'
 
+	import { handleError } from '@/handlers/error.js'
+
 	import Header from '@/components/Header.vue'
 	import Error from '@/components/Error.vue'
 	import Loading from '@/components/Loading.vue'
@@ -40,18 +42,7 @@
 			STATE.LOADING = false
 			STATE.CONTENT.DISPLAY = true
 		})
-		.catch(error => {
-			STATE.LOADING = false
-			STATE.ERROR.DISPLAY = true
-
-			try {
-				STATE.ERROR.CODE = error.response.status
-				STATE.ERROR.DESCRIPTION = error.response.statusText.toLowerCase()
-			} catch {
-				STATE.ERROR.CODE = 'xxx'
-				STATE.ERROR.DESCRIPTION = 'something went horrible wrong'
-			}
-		})
+		.catch(error => handleError(error, STATE))
 </script>
 
 <template>
