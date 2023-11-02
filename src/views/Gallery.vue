@@ -36,7 +36,9 @@
 
 			STATE.CONTENT.DATA.images.data.forEach(image => {
 				IMAGES.push({
-					URL: STORE.URL + image.attributes.url,
+					loaded: false,
+					fullURL: STORE.URL + image.attributes.url,
+					smallURL: STORE.URL + image.attributes.formats.small.url,
 					caption: image.attributes.caption,
 					alternativeText: image.attributes.alternativeText,
 				})
@@ -71,12 +73,29 @@
 			</article>
 
 			<section class="gap-x-10 lg:columns-2">
-				<article v-if="STATE.CONTENT.DATA.showCaptions" v-for="IMAGE in STATE.CONTENT.DATA.images" class="mb-10 overflow-hidden rounded-lg border">
-					<img class="borderline" :src="IMAGE.URL" :alt="IMAGE.alternativeText" loading="lazy" />
-					<p class="p-6 text-center">{{ IMAGE.caption ? IMAGE.caption : 'untitled' }}</p>
-				</article>
+				<article
+					v-for="(IMAGE, index) in STATE.CONTENT.DATA.images"
+					class="mb-10 overflow-hidden rounded-lg border"
+				>
+					<section :class="STATE.CONTENT.DATA.showCaptions ? 'borderline' : ''" class="overflow-hidden">
+						<section
+							:style="`background-image: url('${IMAGE.smallURL}')`"
+							:class="STATE.CONTENT.DATA.images[index].loaded ? '' : 'blur-3xl'"
+							class="bg-cover bg-no-repeat"
+						>
+							<img
+								@load="STATE.CONTENT.DATA.images[index].loaded = true"
+								:src="IMAGE.fullURL"
+								:alt="IMAGE.alternativeText"
+								loading="lazy"
+							/>
+						</section>
+					</section>
 
-				<img v-else v-for="IMAGE in STATE.CONTENT.DATA.images" class="mb-10 rounded-lg border" :src="IMAGE.URL" :alt="IMAGE.alternativeText" loading="lazy" />
+					<p v-if="STATE.CONTENT.DATA.showCaptions" class="p-6 text-center">
+						{{ IMAGE.caption ? IMAGE.caption : 'untitled' }}
+					</p>
+				</article>
 			</section>
 		</section>
 

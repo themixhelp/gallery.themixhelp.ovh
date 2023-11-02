@@ -30,7 +30,9 @@
 			response.data.data.forEach(gallery => {
 				STATE.CONTENT.DATA.push({
 					id: gallery.id,
-					URL: STORE.URL + gallery.attributes.images.data[0].attributes.url,
+					loaded: false,
+					fullURL: STORE.URL + gallery.attributes.images.data[0].attributes.url,
+					smallURL: STORE.URL + gallery.attributes.images.data[0].attributes.formats.small.url,
 					alternativeText: gallery.attributes.images.data[0].attributes.alternativeText,
 					counter: gallery.attributes.images.data.length,
 					title: gallery.attributes.title,
@@ -52,15 +54,32 @@
 
 		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 grid min-h-screen auto-rows-min gap-10 lg:grid-cols-2">
 			<article
-				v-for="{ id, URL, alternativeText, counter, title, description, tags, slug } in STATE.CONTENT.DATA"
+				v-for="(
+					{ id, fullURL, smallURL, alternativeText, counter, title, description, tags, slug }, index
+				) in STATE.CONTENT.DATA"
 				:key="id"
 				class="flex flex-col overflow-hidden rounded-lg border"
 			>
-				<section class="borderline relative">
-					<img class="aspect-square w-full" :src="URL" :alt="alternativeText" loading="lazy" />
-					<span class="absolute right-0 top-0 rounded-bl-lg border-b-2 border-l-2 border-stone-900 bg-stone-100 px-6 py-3 dark:border-stone-100 dark:bg-stone-900"
-						>{{ counter }} photos</span
+				<section class="borderline relative overflow-hidden">
+					<section
+						:style="`background-image: url('${smallURL}')`"
+						:class="STATE.CONTENT.DATA[index].loaded ? '' : 'blur-3xl'"
+						class="bg-cover bg-no-repeat"
 					>
+						<img
+							@load="STATE.CONTENT.DATA[index].loaded = true"
+							:src="fullURL"
+							:alt="alternativeText"
+							class="aspect-square w-full"
+							loading="lazy"
+						/>
+					</section>
+
+					<span
+						class="absolute right-0 top-0 rounded-bl-lg border-b-2 border-l-2 border-stone-900 bg-stone-100 px-6 py-3 dark:border-stone-100 dark:bg-stone-900"
+					>
+						{{ counter }} photos
+					</span>
 				</section>
 
 				<section class="borderline flex flex-1 flex-col justify-between p-6">
