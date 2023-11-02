@@ -62,7 +62,7 @@
 					<h2 class="text-xl font-medium">{{ STATE.CONTENT.DATA.title }}</h2>
 					<h3 class="mb-2">{{ STATE.CONTENT.DATA.description }}</h3>
 
-					<p class="text-zinc-600 dark:text-zinc-400">{{ STATE.CONTENT.DATA.tags }}</p>
+					<p class="text-stone-600 dark:text-stone-400">{{ STATE.CONTENT.DATA.tags }}</p>
 				</section>
 
 				<RouterLink to="/" class="flex items-center justify-center p-6">
