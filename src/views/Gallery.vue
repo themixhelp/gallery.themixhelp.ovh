@@ -88,6 +88,7 @@
 									@load="STATE.CONTENT.DATA.images[index].loaded = true"
 									:src="IMAGE.fullURL"
 									:alt="IMAGE.alternativeText"
+                                    :class="STATE.CONTENT.DATA.images[index].loaded ? '' : 'aspect-square w-full'"
 									loading="lazy"
 								/>
 							</a>
