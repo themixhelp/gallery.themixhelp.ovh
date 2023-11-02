@@ -27,7 +27,6 @@
 	instance
 		.get('/galleries?sort=id:desc')
 		.then(response => {
-            console.log(response)
 			response.data.data.forEach(gallery => {
 				STATE.CONTENT.DATA.push({
 					id: gallery.id,
