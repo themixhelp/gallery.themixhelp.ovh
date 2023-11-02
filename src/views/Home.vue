@@ -32,6 +32,7 @@
 					id: gallery.id,
 					URL: STORE.URL + gallery.attributes.images.data[0].attributes.url,
 					alternativeText: gallery.attributes.images.data[0].attributes.alternativeText,
+					counter: gallery.attributes.images.data.length,
 					title: gallery.attributes.title,
 					description: gallery.attributes.description,
 					tags: gallery.attributes.tags.data.map(item => `#${item.attributes.name}`).join(' '),
@@ -49,10 +50,15 @@
 	<main class="home-wrapper wrapper">
 		<Header />
 
-		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 grid min-h-screen auto-rows-min gap-10 lg:grid-cols-2 2xl:grid-cols-3">
-			<article v-for="{ id, URL, alternativeText, title, description, tags, slug } in STATE.CONTENT.DATA" :key="id" class="border flex flex-col overflow-hidden rounded-lg">
-				<section class="borderline">
+		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 grid min-h-screen auto-rows-min gap-10 lg:grid-cols-2">
+			<article
+				v-for="{ id, URL, alternativeText, counter, title, description, tags, slug } in STATE.CONTENT.DATA"
+				:key="id"
+				class="flex flex-col overflow-hidden rounded-lg border"
+			>
+				<section class="borderline relative">
 					<img class="aspect-square w-full" :src="URL" :alt="alternativeText" loading="lazy" />
+					<span class="absolute right-0 top-0 rounded-bl-lg border-b-2 border-l-2 border-zinc-900 bg-zinc-100 px-6 py-3">{{ counter }} photos</span>
 				</section>
 
 				<section class="borderline flex flex-1 flex-col justify-between p-6">
