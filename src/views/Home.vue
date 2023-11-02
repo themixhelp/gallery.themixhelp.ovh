@@ -58,7 +58,9 @@
 			>
 				<section class="borderline relative">
 					<img class="aspect-square w-full" :src="URL" :alt="alternativeText" loading="lazy" />
-					<span class="absolute right-0 top-0 rounded-bl-lg border-b-2 border-l-2 border-stone-900 bg-stone-100 px-6 py-3 dark:border-stone-100 dark:bg-stone-900">{{ counter }} photos</span>
+					<span class="absolute right-0 top-0 rounded-bl-lg border-b-2 border-l-2 border-stone-900 bg-stone-100 px-6 py-3 dark:border-stone-100 dark:bg-stone-900"
+						>{{ counter }} photos</span
+					>
 				</section>
 
 				<section class="borderline flex flex-1 flex-col justify-between p-6">
