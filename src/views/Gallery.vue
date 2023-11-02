@@ -53,11 +53,11 @@
 </script>
 
 <template>
-	<main class="gallery-wrapper p-12">
+	<main class="gallery-wrapper wrapper">
 		<Header />
 
-		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 grid min-h-screen gap-y-10">
-			<article class="rounded-lg border-2 border-zinc-900 dark:border-zinc-100">
+		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 min-h-screen">
+			<article class="mb-10 rounded-lg border">
 				<section class="borderline p-6">
 					<h2 class="text-xl font-medium">{{ STATE.CONTENT.DATA.title }}</h2>
 					<h3 class="mb-2">{{ STATE.CONTENT.DATA.description }}</h3>
@@ -70,23 +70,14 @@
 				</RouterLink>
 			</article>
 
-			<article
-				v-if="STATE.CONTENT.DATA.showCaptions"
-				v-for="IMAGE in STATE.CONTENT.DATA.images"
-				class="overflow-hidden rounded-lg border-2 border-zinc-900 dark:border-zinc-100"
-			>
-				<img class="borderline" :src="IMAGE.URL" :alt="IMAGE.alternativeText" loading="lazy" />
-				<p class="p-6 text-center">{{ IMAGE.caption ? IMAGE.caption : 'untitled' }}</p>
-			</article>
+			<section class="gap-x-10 lg:columns-2">
+				<article v-if="STATE.CONTENT.DATA.showCaptions" v-for="IMAGE in STATE.CONTENT.DATA.images" class="mb-10 overflow-hidden rounded-lg border">
+					<img class="borderline" :src="IMAGE.URL" :alt="IMAGE.alternativeText" loading="lazy" />
+					<p class="p-6 text-center">{{ IMAGE.caption ? IMAGE.caption : 'untitled' }}</p>
+				</article>
 
-			<img
-				v-else
-				v-for="IMAGE in STATE.CONTENT.DATA.images"
-				class="rounded-lg border-2 border-zinc-900 dark:border-zinc-100"
-				:src="IMAGE.URL"
-				:alt="IMAGE.alternativeText"
-				loading="lazy"
-			/>
+				<img v-else v-for="IMAGE in STATE.CONTENT.DATA.images" class="mb-10 rounded-lg border" :src="IMAGE.URL" :alt="IMAGE.alternativeText" loading="lazy" />
+			</section>
 		</section>
 
 		<Error v-if="STATE.ERROR.DISPLAY" :code="STATE.ERROR.CODE" :description="STATE.ERROR.DESCRIPTION" />

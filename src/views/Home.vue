@@ -46,22 +46,20 @@
 </script>
 
 <template>
-	<main class="home-wrapper p-12">
+	<main class="home-wrapper wrapper">
 		<Header />
 
-		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 min-h-screen">
-			<article
-				v-for="{ id, URL, alternativeText, title, description, tags, slug } in STATE.CONTENT.DATA"
-				:key="id"
-				class="mb-10 overflow-hidden rounded-lg border-2 border-zinc-900 dark:border-zinc-100"
-			>
+		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 grid min-h-screen auto-rows-min gap-10 lg:grid-cols-2 2xl:grid-cols-3">
+			<article v-for="{ id, URL, alternativeText, title, description, tags, slug } in STATE.CONTENT.DATA" :key="id" class="border0 flex flex-col overflow-hidden rounded-lg">
 				<section class="borderline">
 					<img class="aspect-square w-full" :src="URL" :alt="alternativeText" loading="lazy" />
 				</section>
 
-				<section class="borderline p-6">
-					<h2 class="text-xl font-medium">{{ title }}</h2>
-					<h3 class="mb-2">{{ description }}</h3>
+				<section class="borderline flex flex-1 flex-col justify-between p-6">
+					<section class="mb-2">
+						<h2 class="text-xl font-medium">{{ title }}</h2>
+						<h3>{{ description }}</h3>
+					</section>
 
 					<p class="text-zinc-600 dark:text-zinc-400">{{ tags }}</p>
 				</section>
