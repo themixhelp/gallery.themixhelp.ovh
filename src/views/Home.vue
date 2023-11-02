@@ -56,7 +56,7 @@
 				class="mb-10 overflow-hidden rounded-lg border-2 border-zinc-900 dark:border-zinc-100"
 			>
 				<section class="borderline">
-					<img class="aspect-square" :src="URL" :alt="alt" loading="lazy" />
+					<img class="aspect-square w-full" :src="URL" :alt="alt" loading="lazy" />
 				</section>
 
 				<section class="borderline p-6">
