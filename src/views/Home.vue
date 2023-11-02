@@ -25,8 +25,9 @@
 	})
 
 	instance
-		.get('/galleries')
+		.get('/galleries?sort=id:desc')
 		.then(response => {
+            console.log(response)
 			response.data.data.forEach(gallery => {
 				STATE.CONTENT.DATA.push({
 					id: gallery.id,
@@ -56,7 +57,7 @@
 			<article
 				v-for="(
 					{ id, fullURL, smallURL, alternativeText, counter, title, description, tags, slug }, index
-				) in STATE.CONTENT.DATA.reverse()"
+				) in STATE.CONTENT.DATA"
 				:key="id"
 				class="flex flex-col overflow-hidden rounded-lg border"
 			>
