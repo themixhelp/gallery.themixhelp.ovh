@@ -56,7 +56,7 @@
 			<article
 				v-for="(
 					{ id, fullURL, smallURL, alternativeText, counter, title, description, tags, slug }, index
-				) in STATE.CONTENT.DATA"
+				) in STATE.CONTENT.DATA.reverse()"
 				:key="id"
 				class="flex flex-col overflow-hidden rounded-lg border"
 			>
