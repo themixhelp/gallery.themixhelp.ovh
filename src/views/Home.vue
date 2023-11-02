@@ -64,11 +64,11 @@
 				:key="id"
 				class="mb-10 overflow-hidden rounded-lg border-2 border-zinc-900 dark:border-zinc-100"
 			>
-				<section class="border-b-2 border-zinc-900 dark:border-zinc-100">
+				<section class="borderline">
 					<img class="aspect-square" :src="URL" :alt="alt" loading="lazy" />
 				</section>
 
-				<section class="border-b-2 border-zinc-900 p-6 dark:border-zinc-100">
+				<section class="borderline p-6">
 					<h2 class="text-xl font-medium">{{ title }}</h2>
 					<h3 class="mb-2">{{ description }}</h3>
 

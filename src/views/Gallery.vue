@@ -69,7 +69,7 @@
 
 		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 grid min-h-screen gap-y-10">
 			<article class="rounded-lg border-2 border-zinc-900 dark:border-zinc-100">
-				<section class="border-b-2 border-zinc-900 p-6 dark:border-zinc-100">
+				<section class="borderline p-6">
 					<h2 class="text-xl font-medium">{{ STATE.CONTENT.DATA.title }}</h2>
 					<h3 class="mb-2">{{ STATE.CONTENT.DATA.description }}</h3>
 
@@ -86,7 +86,7 @@
 				v-for="IMAGE in STATE.CONTENT.DATA.images"
 				class="overflow-hidden rounded-lg border-2 border-zinc-900 dark:border-zinc-100"
 			>
-				<img class="border-b-2 border-zinc-900 dark:border-zinc-100" :src="IMAGE.URL" :alt="IMAGE.alternativeText" loading="lazy" />
+				<img class="borderline" :src="IMAGE.URL" :alt="IMAGE.alternativeText" loading="lazy" />
 				<p class="p-6 text-center">{{ IMAGE.caption ? IMAGE.caption : 'untitled' }}</p>
 			</article>
 
