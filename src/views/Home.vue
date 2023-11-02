@@ -31,7 +31,7 @@
 				STATE.CONTENT.DATA.push({
 					id: gallery.id,
 					URL: STORE.URL + gallery.attributes.images.data[0].attributes.url,
-					alt: gallery.attributes.images.data[0].attributes.alternativeText,
+					alternativeText: gallery.attributes.images.data[0].attributes.alternativeText,
 					title: gallery.attributes.title,
 					description: gallery.attributes.description,
 					tags: gallery.attributes.tags.data.map(item => `#${item.attributes.name}`).join(' '),
@@ -51,12 +51,12 @@
 
 		<section v-if="STATE.CONTENT.DISPLAY" class="mb-12 min-h-screen">
 			<article
-				v-for="{ id, URL, alt, title, description, tags, slug } in STATE.CONTENT.DATA"
+				v-for="{ id, URL, alternativeText, title, description, tags, slug } in STATE.CONTENT.DATA"
 				:key="id"
 				class="mb-10 overflow-hidden rounded-lg border-2 border-zinc-900 dark:border-zinc-100"
 			>
 				<section class="borderline">
-					<img class="aspect-square w-full" :src="URL" :alt="alt" loading="lazy" />
+					<img class="aspect-square w-full" :src="URL" :alt="alternativeText" loading="lazy" />
 				</section>
 
 				<section class="borderline p-6">
